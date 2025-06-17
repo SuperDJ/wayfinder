@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class BindingResolver
 {
-    protected static $booted = [];
+    protected static array $booted = [];
 
-    protected static $columns = [];
+    protected static array $columns = [];
 
-    public static function resolveTypeAndKey(string $routable, $key): array
+    public static function resolveTypeAndKey(string $routable, string|null $key = null): array
     {
         $booted = self::$booted[$routable] ??= app($routable);
 
