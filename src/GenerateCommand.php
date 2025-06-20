@@ -17,17 +17,17 @@ use function Laravel\Prompts\info;
 
 class GenerateCommand extends Command
 {
-    protected $signature = 'wayfinder:generate {--path=} {--skip-actions} {--skip-routes} {--with-form}';
+    protected string $signature = 'wayfinder:generate {--path=} {--skip-actions} {--skip-routes} {--with-form}';
 
     private ?string $forcedScheme;
 
     private ?string $forcedRoot;
 
-    private $urlDefaults = [];
+    private array $urlDefaults = [];
 
-    private $pathDirectory = 'actions';
+    private string $pathDirectory = 'actions';
 
-    private $content = [];
+    private array $content = [];
 
     /**
      * Imports array where the key is the generated file path and the value is an array of imports.
@@ -46,7 +46,7 @@ class GenerateCommand extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): void
     {
         $this->view->addNamespace('wayfinder', __DIR__.'/../resources');
         $this->view->addExtension('blade.ts', 'blade');
